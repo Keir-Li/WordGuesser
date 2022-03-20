@@ -156,7 +156,6 @@ namespace Word_Guesser
         public static void ProgressBarCiz(int sol, int ust, int deger, int isaret, ConsoleColor color)
         {
             char[] symbol = new char[5] { '\u25A0', '\u2592', '\u2588', '\u2551', '\u2502' };
-            // https://www.bilisimogretmeni.com/
             int maxBarSize = Console.BufferWidth - 1;
             int barSize = deger;
             decimal f = 1;
@@ -168,7 +167,6 @@ namespace Word_Guesser
             Console.CursorVisible = false;
             Console.ForegroundColor = color;
             Console.SetCursorPosition(sol + 5, ust);
-            // https://www.bilisimogretmeni.com/
             for (int i = 0; i < barSize + 1; i++)
             {
                 System.Threading.Thread.Sleep(10);
