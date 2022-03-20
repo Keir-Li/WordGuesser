@@ -3,7 +3,7 @@ using System.Threading;
 
 namespace Word_Guesser
 {
-    internal class Program
+    internal class Program : ProgressBar
     {
         static void Main(string[] args)
         {
@@ -53,7 +53,7 @@ namespace Word_Guesser
             Console.Clear();
 
             // loading game
-            ProgressBarCiz(2, 1, 100, 0, ConsoleColor.White);
+            AppProgressBar(2, 1, 100, 0, ConsoleColor.White);
 
             Console.Clear();
 
@@ -66,8 +66,6 @@ namespace Word_Guesser
             // reset colour of text
             Console.ResetColor();
 
-            // set correct word
-            string correctWord = "Cave";
             // give player a hint
             string easyWordHint = "Hint: It could be starting with C and found near a cliff edge, could be a word for a retail store, a type of terrain, a small horse, a viscious cat or a piece of wildlife that has branches";
             string hardWordHint = "Hint: It could be another word for year, a hot beverage, a type of habitat, a workplace location or a colour. ";
@@ -151,31 +149,6 @@ namespace Word_Guesser
 
 
 
-        }
-
-        public static void ProgressBarCiz(int sol, int ust, int deger, int isaret, ConsoleColor color)
-        {
-            char[] symbol = new char[5] { '\u25A0', '\u2592', '\u2588', '\u2551', '\u2502' };
-            int maxBarSize = Console.BufferWidth - 1;
-            int barSize = deger;
-            decimal f = 1;
-            if (barSize + sol > maxBarSize)
-            {
-                barSize = maxBarSize - (sol + 5); // first 5 character "%100 "
-                f = (decimal)deger / (decimal)barSize;
-            }
-            Console.CursorVisible = false;
-            Console.ForegroundColor = color;
-            Console.SetCursorPosition(sol + 5, ust);
-            for (int i = 0; i < barSize + 1; i++)
-            {
-                System.Threading.Thread.Sleep(10);
-                Console.Write(symbol[isaret]);
-                Console.SetCursorPosition(sol, ust);
-                Console.Write("%" + (i * f).ToString("0,0"));
-                Console.SetCursorPosition(sol + 5 + i, ust);
-            }
-            Console.ResetColor();
         }
     }
 }
