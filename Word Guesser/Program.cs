@@ -9,6 +9,7 @@ namespace Word_Guesser
 
         static void Main(string[] args)
         {
+
             // app information
             AppInfo();
 
@@ -80,9 +81,11 @@ namespace Word_Guesser
                 //Create combination of word + number
                 string correctHardWord = $"{hardWords[randomHardWord.Next(0, hardWords.Length)]}";
 
-
                 // initialise guess variable
                 string guess = "";
+
+                // initialise numnber of guesses
+                int numberOfGuesses = 0;
 
                 // ask player for a word guess
                 Console.WriteLine("Guess a word... ");
@@ -95,6 +98,9 @@ namespace Word_Guesser
                     {
                         // get users input
                         string input = Console.ReadLine();
+
+                        // log an additional guess
+                        numberOfGuesses++;
 
                         // check to see if the input is the same as the correctWord
                         guess = input;
@@ -114,6 +120,7 @@ namespace Word_Guesser
                     {
                         // get users input
                         string input = Console.ReadLine();
+                        numberOfGuesses++;
 
                         // check to see if the input is the same as the correctWord
                         guess = input;
@@ -131,12 +138,16 @@ namespace Word_Guesser
                 // success end game
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Correct!");
+                Console.WriteLine("Number of Guesses: " + numberOfGuesses);
 
                 // write app information
                 AppInfo();
 
                 // ask player if they want to play again
                 Console.WriteLine("Play Again? [Y or N]");
+
+                // reset number of guesses
+                numberOfGuesses = 0;
 
                 // get answer
                 string playerPlayAgain = Console.ReadLine().ToUpper();
@@ -164,7 +175,7 @@ namespace Word_Guesser
         {
             // set app variables
             string appName = "Word Guesser";
-            string appVersion = "1.0";
+            string appVersion = "1.1";
             string appCreator = "Keir Li";
 
             // change colour of text
@@ -199,5 +210,6 @@ namespace Word_Guesser
             // reset colour of text
             Console.ResetColor();
         }
+
     }
 }
